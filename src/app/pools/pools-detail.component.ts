@@ -40,17 +40,15 @@ export class PoolsDetailComponent implements OnInit{
 	}
 
 	toggleSelect(id:number, leg:string){
-		let legNumber = this.selectedLines[+leg-1]; //convert to int and adjust to array
-		if(legNumber){
-			for(var i = 0; i < this.selectedLines.length; i++){
-				if( this.selectedLines[i].leg == legNumber.leg ){
-					legNumber.ids.push(id);
-				}
-				
+		let legExists: boolean = false;
+		for(var i = 0; i < this.selectedLines.length; i++){
+			if(this.selectedLines[i].leg == leg){
+				legExists = true;
+				this.selectedLines[i].ids.push(id);
+				break;
 			}
-
 		}
-		else{
+		if(!legExists){
 			this.selectedLines.push({leg, 'ids': [id]});
 		}
 		this.calculateBet(this.selectedLines);
@@ -66,5 +64,6 @@ export class PoolsDetailComponent implements OnInit{
 		}
 		totalLines *= selections.length;
 		this.totalLines = totalLines;
+		console.log(selections);
 	}
 }

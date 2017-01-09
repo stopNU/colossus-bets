@@ -1,0 +1,13 @@
+<div class="categories" *ngFor='let pool of pools'>
+	<h1>{{ pool.display_group_name }}</h1>
+	<div *ngIf='pool.groups.length != 0' >
+		<div class="pool" *ngFor='let nestedPool of pool.groups'>
+			<div *ngFor='let pool of nestedPool.pools'>
+				<pools-info [info]='pool' [optionalGroupName]='nestedPool.display_group_name' ></pools-info>
+			</div>
+		</div>
+	</div>
+	<div class="pool" *ngFor='let pool of pool.pools' >
+		<pools-info [info]='pool' ></pools-info>
+	</div>
+</div>

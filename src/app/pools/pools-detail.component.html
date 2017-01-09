@@ -1,0 +1,29 @@
+Bet Value: <select [(ngModel)]='betValue' name="amount">
+	<option *ngFor='let amount of betAmounts' [value]='amount' [selected]="betAmounts[0] | currency: 'GBP':true:'1.2-2'" >
+		{{amount | currency: 'GBP':true:'1.2-2' }}
+	</option>
+</select>
+<div>
+	<h4>Number of lines {{ totalLines }} Ticket cost {{ totalLines*betValue | currency: 'GBP':true:'1.2-2' }}</h4>
+</div>
+
+<div *ngIf="pool">
+	<h3 class="title">{{pool.pool_info.name}}</h3>
+	<h4>Playing for: {{pool.pool_info.headline_prize | currency: pool.pool_info.currency:true:'1.0'}}</h4>
+	<p class="status">{{pool.pool_info.status}}</p>
+
+	<div *ngFor='let leg of pool?.legs; let i = index;'>
+		<h2>Leg {{i}}: {{leg.sport_event.name}}</h2>
+		<div class="selection-list">
+			<button  
+				[class.active]="selectedStatus[selection.id]" class="selection" 
+				(click)='toggleSelect(selection.id, leg.leg_order); selectedStatus[selection.id] = !selectedStatus[selection.id]' 
+				*ngFor='let selection of leg.selections;'>
+				{{selection.name}}
+			</button>
+		</div>
+	</div>
+	<a class="btn btn-default mt-20" (click)='onBack()' style="width:80px">
+		<i class="glyphicon glyphicon-chevron-left"></i>Back
+	</a>
+</div>

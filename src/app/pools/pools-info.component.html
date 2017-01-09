@@ -1,0 +1,7 @@
+<h5 class="title">{{info.name}}</h5>
+<div class="info">
+	<p *ngIf='optionalGroupName' class="group_name">{{optionalGroupName}}</p>
+	<p>{{info.headline_prize | currency: info.currency:true:'1.0'}}</p>
+	<p class="status">{{info.status}}</p>
+	<p><a class="btn btn-primary" [routerLink]="['/pools',info.id]" >See details</a></p>
+</div>

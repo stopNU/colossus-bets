@@ -1,0 +1,54 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body, h1, h2, h3 {
+  font-weight: 300
+}
+
+a {
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    color: #5aadbb;
+    margin-right: 15px;
+  }
+}
+p{
+  
+}
+.mt-20{
+  margin-top: 20px;
+}
+.container .categories {
+  border-bottom: 1px solid black;
+    padding-bottom: 25px;
+}
+
+.pool{
+  .status{
+    color: green;
+  }
+  .group_name{
+    font-weight: 600;
+  }
+  .info{
+    
+    p{
+      display: inline-block;
+    }
+  }
+}
+.title{
+	color: #f60;
+  margin-bottom: 0;
+}
+.selection{
+  margin: auto 5px;
+  &.active{
+    background: lightblue;
+  }
+}
